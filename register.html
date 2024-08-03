@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5cb85c;
+            color: white;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        #errorMessage {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+const form = document.createElement('form');
+form.id = 'registrationForm';
+const nameLabel = document.createElement('label');
+nameLabel.htmlFor = 'name';
+nameLabel.textContent = 'Name:';
+const nameInput = document.createElement('input');
+nameInput.type = 'text';
+nameInput.id = 'name';
+nameInput.name = 'name';
+nameInput.required = true;
+const emailLabel = document.createElement('label');
+emailLabel.htmlFor = 'email';
+emailLabel.textContent = 'Email:';
+const emailInput = document.createElement('input');
+emailInput.type = 'email';
+emailInput.id = 'email';
+emailInput.name = 'email';
+emailInput.required = true;
+const phoneLabel = document.createElement('label');
+phoneLabel.htmlFor = 'phone';
+phoneLabel.textContent = 'Phone Number:';
+const phoneInput = document.createElement('input');
+phoneInput.type = 'tel';
+phoneInput.id = 'phone';
+phoneInput.name = 'phone';
+phoneInput.required = true;
+const genderLabel = document.createElement('label');
+genderLabel.textContent = 'Gender:';
+const genderMaleLabel = document.createElement('label');
+genderMaleLabel.htmlFor = 'male';
+genderMaleLabel.textContent = 'Male';
+const genderMaleInput = document.createElement('input');
+genderMaleInput.type = 'radio';
+genderMaleInput.id = 'male';
+genderMaleInput.name = 'gender';
+genderMaleInput.value = 'male';
+genderMaleInput.required = true;
+const genderFemaleLabel = document.createElement('label');
+genderFemaleLabel.htmlFor = 'female';
+genderFemaleLabel.textContent = 'Female';
+const genderFemaleInput = document.createElement('input');
+genderFemaleInput.type = 'radio';
+genderFemaleInput.id = 'female';
+genderFemaleInput.name = 'gender';
+genderFemaleInput.value = 'female';
+genderFemaleInput.required = true;
+const dobLabel = document.createElement('label');
+dobLabel.htmlFor = 'dob';
+dobLabel.textContent = 'Date of Birth:';
+const dobInput = document.createElement('input');
+dobInput.type = 'date';
+dobInput.id = 'dob';
+dobInput.name = 'dob';
+dobInput.required = true;
+const addressLabel = document.createElement('label');
+addressLabel.htmlFor = 'address';
+addressLabel.textContent = 'Address:';
+const addressInput = document.createElement('textarea');
+addressInput.id = 'address';
+addressInput.name = 'address';
+addressInput.required = true;
+const submitButton = document.createElement('button');
+submitButton.type = 'submit';
+submitButton.textContent = 'Register';
+const errorMessage = document.createElement('p');
+errorMessage.id = 'errorMessage';
+form.appendChild(nameLabel);
+form.appendChild(nameInput);
+form.appendChild(emailLabel);
+form.appendChild(emailInput);
+form.appendChild(phoneLabel);
+form.appendChild(phoneInput);
+form.appendChild(genderLabel);
+form.appendChild(genderMaleLabel);
+form.appendChild(genderMaleInput);
+form.appendChild(genderFemaleLabel);
+form.appendChild(genderFemaleInput);
+form.appendChild(dobLabel);
+form.appendChild(dobInput);
+form.appendChild(addressLabel);
+form.appendChild(addressInput);
+form.appendChild(submitButton);
+form.appendChild(errorMessage);
+document.body.appendChild(form);
+form.addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    const name = nameInput.value;
+    const email = emailInput.value;
+    const phone = phoneInput.value;
+    const gender = document.querySelector('input[name="gender"]:checked').value;
+    const dob = dobInput.value;
+    const address = addressInput.value;
+    if (!name || !email || !phone || !gender || !dob || !address) {
+        errorMessage.textContent = 'All fields are required.';
+        return;
+    }
+    errorMessage.textContent = 'Registration successful!';
+    form.reset();
+});
+
+    </script>
+</body>
+</html>
